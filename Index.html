@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anh xin lỗi vợ iuuu Mỹ Mỹ của anh nhoo❤️❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+        }
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            animation: blink 2s infinite;
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+            position: relative;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            padding: 12px 25px;
+            font-size: 1em;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            min-width: 120px;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .btn-tha {
+            background-color: #ffffff;
+            color: #e91e63;
+        }
+        .btn-khong {
+            background-color: #e91e63;
+            color: #ffffff;
+            position: relative;
+            transition: all 0.5s ease-out;
+        }
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            background-color: pink;
+            transform: rotate(45deg);
+            animation: float 8s infinite ease-in;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            background-color: pink;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -8px;
+            left: 0;
+        }
+        .heart::after {
+            left: -8px;
+            top: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .sticker {
+            position: absolute;
+            width: 80px;
+            opacity: 0.8;
+            animation: floatSticker 15s infinite linear;
+            z-index: -1;
+        }
+        @keyframes floatSticker {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50vh) rotate(180deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        .love-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            max-width: 80%;
+            max-height: 80%;
+            z-index: 100;
+            animation: popup 1s forwards;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255,105,180,0.8);
+        }
+        @keyframes popup {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            80% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            display: none;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+                min-width: 100px;
+            }
+            .sticker {
+                width: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="heartsContainer"></div>
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/4392/4392522.png" class="sticker" style="left: 10%; top: 20%;">
+    <img src="https://cdn-icons-png.flaticon.com/512/4392/4392528.png" class="sticker" style="left: 80%; top: 30%; animation-delay: 2s;">
+    <img src="https://cdn-icons-png.flaticon.com/512/2102/2102647.png" class="sticker" style="left: 30%; top: 10%; animation-delay: 4s;">
+
+    <h1>Anh xin lỗi vợ iuuu Mỹ Mỹ của anh nhoo❤️❤️</h1>
+    
+    <div class="buttons">
+        <button class="btn btn-tha" onclick="forgive()">Tha lỗi</button>
+        <button class="btn btn-khong" id="noButton">Không tha lỗi</button>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <img id="loveImage" class="love-image" style="display: none;" src="https://i.postimg.cc/Kvmq6N6N/IMG-20250413-210721.jpg">
+
+    <audio id="heartSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3"></audio>
+    <audio id="yaySound" src="https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-cheer-964.mp3"></audio>
+
+    <script>
+        const preloadImage = new Image();
+        preloadImage.src = 'https://i.imgur.com/8kGfXbP.jpg';
+        preloadImage.onerror = () => {
+            console.error('Failed to preload image at: https://i.imgur.com/8kGfXbP.jpg');
+            alert('Không thể tải hình ảnh. Vui lòng kiểm tra URL hoặc kết nối mạng.');
+        };
+        preloadImage.onload = () => {
+            console.log('Image preloaded successfully: https://i.imgur.com/8kGfXbP.jpg');
+        };
+
+        const heartsContainer = document.getElementById('heartsContainer');
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.width = (Math.random() * 10 + 10) + 'px';
+            heart.style.height = heart.style.width;
+            heart.style.animationDelay = Math.random() * 10 + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        const noButton = document.getElementById("noButton");
+        noButton.addEventListener("click", () => {
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+            const maxX = window.innerWidth - buttonWidth;
+            const maxY = window.innerHeight - buttonHeight;
+            
+            const newX = Math.max(10, Math.random() * maxX - 10);
+            const newY = Math.max(10, Math.random() * maxY - 10);
+            
+            noButton.style.transform = `translate(${newX}px, ${newY}px) rotate(${Math.random() * 360}deg) scale(1.2)`;
+            document.getElementById('heartSound').play();
+        });
+
+        function forgive() {
+            document.getElementById('heartSound').play();
+            document.getElementById('yaySound').play();
+            
+            const overlay = document.getElementById('overlay');
+            const loveImage = document.getElementById('loveImage');
+            
+            overlay.style.display = 'block';
+            loveImage.style.display = 'block';
+
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createHeartBurst();
+                }, i * 100);
+            }
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                loveImage.style.display = 'none';
+                alert('Cảm ơn vợ yêu đã tha lỗi! Anh hứa sẽ không để em buồn nữa ❤️');
+            }, 3000);
+        }
+
+        function createHeartBurst() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = 50 + '%';
+            heart.style.top = 50 + '%';
+            heart.style.width = '20px';
+            heart.style.height = '20px';
+            heart.style.animation = 'float 3s ease-out forwards';
+            heart.style.opacity = '0.8';
+            
+            const colors = ['#ff3366', '#ff66b3', '#ff9999', '#ffccff'];
+            heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
